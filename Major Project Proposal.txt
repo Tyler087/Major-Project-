@@ -1,0 +1,26 @@
+#Major Project Proposal
+##Tyler Smith 
+###First Person Shooter Game
+
+##Description
+ For my major project I was planning on making a first person shooter game in processing. Its either going to consist of a background with
+ enemies coming at you and getting bigger or having a special object on one side of the screen and have enemies at the other side run across
+ to get at the object. You will shoot the enemies by clicking on them. Once they get so close to you or the object they will start taking down
+ your life. I chose to make this because i enjoy playing first person shooter games and I feel i will have alot of fun creating one.
+
+## Must Haves
+  - Title Screen
+  - Background
+  - Moving enemies
+  - Click Detection
+  - Health
+  -Game over screen
+
+## Nice To Have
+-Game play music
+  -Sound effects when the mouse is clicked
+  -A limited amount of rounds and a reload feature
+  -Monsters with different health levels
+-different levels
+-Highscores
+-Health regeneration after so many kills are acheived
