@@ -5,6 +5,8 @@ class Monsters {
   int x = 0;
   int y = 500;
   int dx = int(random(2, 7));
+  float starTime = millis();
+  float timeToWait = random(100,2000);
 
 
   //constructor
