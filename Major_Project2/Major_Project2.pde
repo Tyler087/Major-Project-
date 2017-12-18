@@ -3,39 +3,45 @@ Timer theTimer;
 
 
 Monsters monster1;
+int counter =0;
 
 
 void setup() {
   size(1200, 800);
-  theTimer = new Timer(1000);
-  monster1 = new Monsters(0, 500);
+  theTimer = new Timer(2000);
+  monster1 = new Monsters();
   //for ( int i  = 0; i <10; i ++) {
 
-      //theMonsters.add(monster1);
-    }
+  //theMonsters.add(monster1);
+}
 //}
-  
+
 void draw() {
   background(255);
-  if (theTimer.isFinished() ){
-  theMonsters.add(monster1);
-  theTimer.begin();
+  fill(0);
+  textSize(28);
+  text( "Score: " + counter, 25,40);
+  if (theTimer.isFinished() ) {
+    theMonsters.add(new Monsters());
+    theTimer.begin();
   }
 
   for (Monsters thisMonster : theMonsters) {
     thisMonster.movingMonsters();
-  
   }
 }
 
 
-//void killMonster() {
-//  for (int i=theMonsters.size()-1; i >= 0; i--) { 
-//     Monsters thisMonster = theMonsters.get(i);
+void killMonster() {
+  for (int i=theMonsters.size()-1; i >= 0; i--) { 
+    Monsters thisMonster = theMonsters.get(i);
+    if (thisMonster.isClicked(mouseX, mouseY)) {
+      theMonsters.remove(i);
+      counter ++;
+    }
+  }
+}
 
-//    if (thisMonster.isClicked(mouseX, 700)) {
-//      theMonsters.remove(i);
-//    }
-//  }
-//}
-//}
+void mousePressed(){
+ killMonster(); 
+}
