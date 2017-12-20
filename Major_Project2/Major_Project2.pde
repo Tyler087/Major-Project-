@@ -1,26 +1,24 @@
 ArrayList<Monsters> theMonsters = new ArrayList<Monsters>();
+
 Timer theTimer;
-
-
 Monsters monster1;
+Health health1;
+
 int counter =0;
 
 
 void setup() {
   size(1200, 800);
-  theTimer = new Timer(2000);
+  theTimer = new Timer(1000);
   monster1 = new Monsters();
-  //for ( int i  = 0; i <10; i ++) {
-
-  //theMonsters.add(monster1);
+  health1 = new Health();
 }
-//}
 
 void draw() {
   background(255);
   fill(0);
   textSize(28);
-  text( "Score: " + counter, 25,40);
+  text( "Score: " + counter, 25, 40);
   if (theTimer.isFinished() ) {
     theMonsters.add(new Monsters());
     theTimer.begin();
@@ -29,6 +27,8 @@ void draw() {
   for (Monsters thisMonster : theMonsters) {
     thisMonster.movingMonsters();
   }
+   health1.displayLifeBar();
+   health1.character();
 }
 
 
@@ -42,6 +42,6 @@ void killMonster() {
   }
 }
 
-void mousePressed(){
- killMonster(); 
+void mousePressed() {
+  killMonster();
 }

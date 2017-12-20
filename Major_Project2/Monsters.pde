@@ -37,16 +37,19 @@ class Monsters {
     }
     x = x + dx;
 
-    ellipse(x, y, size, size);
-
+    //noStroke();
+    ellipse(x, y, 45, size);
+    
+    if ( x <1000){
     imageMode(CENTER);
     image(shooter[shooterCounter], x, y);
     if (frameCount % 5 == 0) {
       shooterCounter ++;
       shooterCounter = shooterCounter % shooter.length;
     }
+    }
     
-    if ( x >= 999) {
+    if ( x >= 1000) {
       for (int i =0; i <shooting.length; i++) {
         shooting[i] = loadImage ( i + "00.png");
       }
