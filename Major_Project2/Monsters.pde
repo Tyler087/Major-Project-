@@ -12,6 +12,7 @@ class Monsters {
   float size = 75;
   int shooterCounter = 0;
   int shootingCounter = 0;
+  public int monsterLife = 10;
 
 
 
@@ -20,6 +21,7 @@ class Monsters {
     x = 0;
     y = 500;
     shooterCounter = 0;
+    monsterLife = 10;
 
     //Loops through bird images to make it animated
     for (int i =0; i <shooter.length; i++) {
@@ -29,7 +31,7 @@ class Monsters {
   //behaviour
 
   void movingMonsters() {
-    fill(255);
+    fill(255, 255, 255, 0);
 
 
     if (x >= 1000) {
@@ -37,8 +39,8 @@ class Monsters {
     }
     x = x + dx;
 
-    //noStroke();
-    ellipse(x, y, 45, size);
+    noStroke();
+    ellipse(x, y, 40, size);
     
     if ( x <1000){
     imageMode(CENTER);
@@ -62,6 +64,7 @@ class Monsters {
       
     }
     }
+
   }
 
   boolean isClicked(float _x, float _y) {

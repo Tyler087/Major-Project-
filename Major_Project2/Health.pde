@@ -19,6 +19,9 @@ class Health{
   }
   
   void displayLifeBar(){
+    fill(0);
+    textAlign(CENTER);
+    text(life, width/2, 70);
     fill(255, 0, 0);
     rectMode(CENTER);
     rect(width/2, 100, life, 40);
@@ -28,6 +31,10 @@ class Health{
       life = life - 5; 
      //}
     }
+    
+    //if (life == 0){
+    // state = 2; 
+    //}
     
   }
   
