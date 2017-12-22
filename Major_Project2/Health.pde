@@ -26,16 +26,17 @@ class Health{
     rectMode(CENTER);
     rect(width/2, 100, life, 40);
     
-    if (frameCount % 5 == 0){
-     //if(theMonsters >= 1000){
-      life = life - 5; 
-     //}
-    }
+    
     
     //if (life == 0){
     // state = 2; 
     //}
     
+  }
+  void takeDownLife(){
+   if (frameCount % 5 == 0){
+      life = life - 3; 
+    } 
   }
   
   

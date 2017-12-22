@@ -3,6 +3,7 @@ ArrayList<Monsters> theMonsters = new ArrayList<Monsters>();
 Timer theTimer;
 Monsters monster1;
 Health health1;
+Ammo ammo1;
 
 PImage gun;
 PImage background;
@@ -21,6 +22,7 @@ void setup() {
   theTimer = new Timer(1000);
   monster1 = new Monsters();
   health1 = new Health();
+  ammo1 = new Ammo();
 }
 
 void draw() {
@@ -39,11 +41,13 @@ void draw() {
     for (Monsters thisMonster : theMonsters) {
       thisMonster.movingMonsters();
       if (thisMonster.x > 1000) {
-        
+        health1.takeDownLife();
       }
     }
     health1.displayLifeBar();
     health1.character();
+    ammo1.display();
+    //ammo1.delayReload();
 
     if (state == 2) {
       image(gameOver, width/2, height/2, gameOver.width*4, gameOver.height*4);
@@ -65,4 +69,5 @@ void killMonster() {
 
 void mousePressed() {
   killMonster();
+  ammo1.shoot();
 }
