@@ -28,9 +28,9 @@ class Health{
     
     
     
-    //if (life == 0){
-    // state = 2; 
-    //}
+    if (life <= 0){
+     state = 3; 
+    }
     
   }
   void takeDownLife(){

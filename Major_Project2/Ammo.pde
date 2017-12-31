@@ -30,20 +30,20 @@ class Ammo{
     }
   }
    
-   //void delayReload(){
-   //if (clipSize == 0){
-   //  endTime = millis() + reloadTimer;
-   //  if (millis() >= endTime){
-   //   clipSize += 10; 
-   //   reloadTimer.begin();
-   //  }
+  // void delayReload(){
+  // if (clipSize == 0){
+  //   endTime = millis() + reloadTimer;
+  //   if (millis() >= endTime){
+  //    clipSize += 10; 
+  //    reloadTimer.begin();
+  //   }
      
-   //}
+  // }
     
-  }
+  //}
   
   
   
   
   
-//}
+}

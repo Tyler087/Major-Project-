@@ -8,6 +8,7 @@ Ammo ammo1;
 PImage gun;
 PImage background;
 PImage gameOver;
+PImage titleScreen;
 
 int counter =0;
 int state = 1;
@@ -17,22 +18,43 @@ int state = 1;
 void setup() {
   size(1200, 800);
   gun = loadImage("Gun.png");
-  gameOver = loadImage("Gameover1.png");
+  gameOver = loadImage("end.png");
+  titleScreen = loadImage ("title.jpg");
   //background = loadImage("background.png");
   theTimer = new Timer(1000);
   monster1 = new Monsters();
   health1 = new Health();
   ammo1 = new Ammo();
+  if (state == 1){
+    imageMode(CENTER);
+    image(titleScreen, width/2, height/2, titleScreen.width*0.7, titleScreen.height*0.75);
+  }
 }
 
 void draw() {
-  if (state == 1) {
+  if (state == 1){
+    rectMode(CENTER);
+    fill(255);
+    //text("Play", width/2, height/2 +150);
+    fill(50,50,50);
+    rect(width/2, height/2+100, 200, 100);
+    if(mouseX > 500 && mouseX < 700 && mouseY > 450 && mouseY < 550){
+      //text("Play", width/2, height/2 +150);
+      fill(255,0,0);
+      rect(width/2, height/2 +100, 200,100);
+      if(mousePressed){
+        state +=1;
+      }
+    }
+  }
+    
+  if (state == 2) {
     background(255);
     fill(0);
     //image(background , width/2, height/2, background.width*0.4, background.height*0.5);
     cursor(CROSS);
     textSize(28);
-    text( "Score: " + counter, 25, 40);
+    text( "Score: " + counter, 70, 40);
     if (theTimer.isFinished() ) {
       theMonsters.add(new Monsters());
       theTimer.begin();
@@ -49,8 +71,12 @@ void draw() {
     ammo1.display();
     //ammo1.delayReload();
 
-    if (state == 2) {
-      image(gameOver, width/2, height/2, gameOver.width*4, gameOver.height*4);
+    if (state == 3) {
+      image(gameOver, width/2, height/2-60, gameOver.width*0.65, gameOver.height*0.87);
+      cursor(HAND);
+      textAlign(CENTER);
+      textSize(42);
+      text("Your score was " + counter, 600, 660); 
     }
   }
 }
