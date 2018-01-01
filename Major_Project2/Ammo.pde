@@ -32,7 +32,7 @@ class Ammo{
    
   // void delayReload(){
   // if (clipSize == 0){
-  //   endTime = millis() + reloadTimer;
+  //   endTime = startTime + reloadTimer;
   //   if (millis() >= endTime){
   //    clipSize += 10; 
   //    reloadTimer.begin();

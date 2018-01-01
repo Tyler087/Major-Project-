@@ -28,6 +28,9 @@ void setup() {
   if (state == 1){
     imageMode(CENTER);
     image(titleScreen, width/2, height/2, titleScreen.width*0.7, titleScreen.height*0.75);
+    textAlign(CENTER);
+    textSize(72);
+    text("DEFENDER", width/2, height/2+25);
   }
 }
 
@@ -35,13 +38,13 @@ void draw() {
   if (state == 1){
     rectMode(CENTER);
     fill(255);
-    //text("Play", width/2, height/2 +150);
+    text("Play", width/2, height/2 +175);
     fill(50,50,50);
-    rect(width/2, height/2+100, 200, 100);
-    if(mouseX > 500 && mouseX < 700 && mouseY > 450 && mouseY < 550){
-      //text("Play", width/2, height/2 +150);
+    rect(width/2, height/2+125, 200, 100);
+    if(mouseX > 500 && mouseX < 700 && mouseY > 475 && mouseY < 575){
+      text("Play", width/2, height/2 +175);
       fill(255,0,0);
-      rect(width/2, height/2 +100, 200,100);
+      rect(width/2, height/2 +125, 200,100);
       if(mousePressed){
         state +=1;
       }

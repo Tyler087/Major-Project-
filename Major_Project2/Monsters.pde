@@ -23,7 +23,7 @@ class Monsters {
     shooterCounter = 0;
     monsterLife = 10;
 
-    //Loops through bird images to make it animated
+    //Loops through images to make it animated
     for (int i =0; i <shooter.length; i++) {
       shooter[i] = loadImage ( i + ".png");
     }
