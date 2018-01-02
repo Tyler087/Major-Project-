@@ -37,10 +37,11 @@ void setup() {
 void draw() {
   if (state == 1){
     rectMode(CENTER);
-    fill(255);
-    text("Play", width/2, height/2 +175);
+    
     fill(50,50,50);
     rect(width/2, height/2+125, 200, 100);
+    fill(255);
+    text("Play", width/2, height/2 +175);
     if(mouseX > 500 && mouseX < 700 && mouseY > 475 && mouseY < 575){
       text("Play", width/2, height/2 +175);
       fill(255,0,0);

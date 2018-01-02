@@ -31,8 +31,8 @@ class Ammo{
   }
    
   // void delayReload(){
-  // if (clipSize == 0){
-  //   endTime = startTime + reloadTimer;
+  // if (clipSize <= 0){
+  //   endTime = startTime + 2000;
   //   if (millis() >= endTime){
   //    clipSize += 10; 
   //    reloadTimer.begin();
