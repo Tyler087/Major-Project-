@@ -39,6 +39,13 @@ class Health{
     } 
   }
   
+  //void regenerateLife(){
+  //  if (score % 10 == 0){
+  //   life = life +10; 
+  //  }
+   
+  //}
+  
   
   
 }

@@ -10,7 +10,7 @@ PImage background;
 PImage gameOver;
 PImage titleScreen;
 
-int counter =0;
+int score =0;
 int state = 1;
 
 
@@ -20,7 +20,7 @@ void setup() {
   gun = loadImage("Gun.png");
   gameOver = loadImage("end.png");
   titleScreen = loadImage ("title.jpg");
-  //background = loadImage("background.png");
+  background = loadImage("mapr.jpg");
   theTimer = new Timer(1000);
   monster1 = new Monsters();
   health1 = new Health();
@@ -38,14 +38,15 @@ void draw() {
   if (state == 1){
     rectMode(CENTER);
     
-    fill(50,50,50);
+    fill(15,0,6);
     rect(width/2, height/2+125, 200, 100);
     fill(255);
-    text("Play", width/2, height/2 +175);
+    text("Play", width/2, height/2 +150);
     if(mouseX > 500 && mouseX < 700 && mouseY > 475 && mouseY < 575){
-      text("Play", width/2, height/2 +175);
-      fill(255,0,0);
+      fill(30,0,20);
       rect(width/2, height/2 +125, 200,100);
+      fill(255);
+      text("Play", width/2, height/2 +150);
       if(mousePressed){
         state +=1;
       }
@@ -55,10 +56,10 @@ void draw() {
   if (state == 2) {
     background(255);
     fill(0);
-    //image(background , width/2, height/2, background.width*0.4, background.height*0.5);
+    image(background , width/2, height/2);
     cursor(CROSS);
     textSize(28);
-    text( "Score: " + counter, 70, 40);
+    text( "Score: " + score, 70, 40);
     if (theTimer.isFinished() ) {
       theMonsters.add(new Monsters());
       theTimer.begin();
@@ -70,8 +71,11 @@ void draw() {
         health1.takeDownLife();
       }
     }
+    
+    
     health1.displayLifeBar();
     health1.character();
+    //health1.regenerateLife();
     ammo1.display();
     //ammo1.delayReload();
 
@@ -80,7 +84,7 @@ void draw() {
       cursor(HAND);
       textAlign(CENTER);
       textSize(42);
-      text("Your score was " + counter, 600, 660); 
+      text("Your score was " + score, 600, 660); 
     }
   }
 }
@@ -92,7 +96,7 @@ void killMonster() {
     Monsters thisMonster = theMonsters.get(i);
     if (thisMonster.isClicked(mouseX, mouseY)) {
       theMonsters.remove(i);
-      counter ++;
+      score ++;
     }
   }
 }
