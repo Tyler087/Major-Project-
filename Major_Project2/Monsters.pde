@@ -1,4 +1,4 @@
-class Monsters {
+public class Monsters {
 
   //data
   PImage[] shooter = new PImage [10];
@@ -6,13 +6,13 @@ class Monsters {
   public int theMonsters =1000;
   int x = 0;
   int y = 500;
-  int dx = int(random(2, 9));
+  int dx = int(random(4,11));
   float starTime = millis();
-  float timeToWait = random(100, 2000);
+  float timeToWait = random(0, 1500);
   float size = 75;
   int shooterCounter = 0;
   int shootingCounter = 0;
-  public int monsterLife = 10;
+  public int monsterLife = 2;
 
 
 
@@ -21,7 +21,7 @@ class Monsters {
     x = 0;
     y = 500;
     shooterCounter = 0;
-    monsterLife = 10;
+    //monsterLife = 2;
 
     //Loops through images to make it animated
     for (int i =0; i <shooter.length; i++) {
@@ -40,7 +40,7 @@ class Monsters {
     x = x + dx;
 
     noStroke();
-    ellipse(x, y, 40, size);
+    ellipse(x, y, 35, size);
     
     if ( x <1000){
     imageMode(CENTER);
@@ -70,6 +70,7 @@ class Monsters {
   boolean isClicked(float _x, float _y) {
     float distanceFromCenter = dist(x, y, _x, _y);
     if (distanceFromCenter <size/2) {
+      //monsterLife -= 1;
       return true;
     } else {
       return false;

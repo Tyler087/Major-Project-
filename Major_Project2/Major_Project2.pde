@@ -15,6 +15,7 @@ int state = 1;
 
 
 
+
 void setup() {
   size(1200, 800);
   gun = loadImage("Gun.png");

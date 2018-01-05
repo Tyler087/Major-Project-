@@ -40,7 +40,7 @@ class Health{
   }
   
   //void regenerateLife(){
-  //  if (score % 10 == 0){
+  //  if (score > 0 && score % 10 == 0){
   //   life = life +10; 
   //  }
    

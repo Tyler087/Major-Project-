@@ -10,7 +10,7 @@ class Ammo{
   //contructor
   Ammo(){
    clipSize = 10;
-   reloadTimer = new Timer(5000);
+   reloadTimer = new Timer(3000);
    startTime = millis();
    //reloadTimer = 5000; 
    
@@ -30,15 +30,15 @@ class Ammo{
     }
   }
    
-   //void delayReload(){
-   //if (clipSize <= 0){
-   //  endTime = startTime + 2000;
-   //  if (millis() >= endTime){
-   //   clipSize += 10; 
-   //   reloadTimer.begin();
-   //  }
+  // void delayReload(){
+  // if (clipSize <= 0){
+  //   endTime = startTime + 2000;
+  //   if (millis() >= endTime){
+  //    clipSize += 10; 
+  //    reloadTimer.begin();
+  //   }
      
-   //}
+  // }
     
   //}
   
