@@ -1,5 +1,16 @@
 ArrayList<Monsters> theMonsters = new ArrayList<Monsters>();
 
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+Minim minim;
+AudioPlayer fired;
+
+
 Timer theTimer;
 Monsters monster1;
 Health health1;
@@ -26,6 +37,9 @@ void setup() {
   monster1 = new Monsters();
   health1 = new Health();
   ammo1 = new Ammo();
+  
+  minim = new Minim(this);
+  fired = minim.loadFile("gunfire.mp3");
 
 
   if (state == 1) {
@@ -73,13 +87,17 @@ void draw() {
       if (thisMonster.x > 1000) {
         health1.takeDownLife();
       }
+      if( mousePressed && ammo1.clipSize >=1){
+         fired.play(); 
+         fired.rewind();
+  }
+      
     }
-    
+
 
 
     health1.displayLifeBar();
     health1.character();
-    //health1.regenerateLife();
     ammo1.display();
 
 
@@ -88,6 +106,7 @@ void draw() {
       cursor(HAND);
       textAlign(CENTER);
       textSize(42);
+      fill(255,0,0);
       text("Your score was " + score, 600, 660);
     }
   }
@@ -98,9 +117,13 @@ void draw() {
 void killMonster() {
   for (int i=theMonsters.size()-1; i >= 0; i--) { 
     Monsters thisMonster = theMonsters.get(i);
-    if (thisMonster.isClicked(mouseX, mouseY) && ammo1.clipSize > 0){
+    if (thisMonster.isClicked(mouseX, mouseY) && ammo1.clipSize > 0) {
       theMonsters.remove(i);
       score ++;
+      if (score % 5 ==0){
+        health1.regenerateLife();
+        
+      }
     }
   }
 }
@@ -109,4 +132,5 @@ void killMonster() {
 void mousePressed() {
   killMonster();
   ammo1.shoot();
+  
 }

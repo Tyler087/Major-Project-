@@ -13,7 +13,6 @@ class Ammo {
     clipSize = 10;
     reloadTimer = new Timer(1000);
     startTime = millis();
-    //reloadTimer = 5000;
     outOfAmmo = false;
   }
 
@@ -22,6 +21,8 @@ class Ammo {
   //behaviour
 
   void display() {
+    fill(0, 250, 10);
+    text("Ammo : ", width*0.84, 50);
     text(clipSize, width*0.9, 50);
 
     //check if reloading is ready
