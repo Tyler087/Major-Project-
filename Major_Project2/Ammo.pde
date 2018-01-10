@@ -10,7 +10,7 @@ class Ammo {
 
   //contructor
   Ammo() {
-    clipSize = 10;
+    clipSize = 7;
     reloadTimer = new Timer(1000);
     startTime = millis();
     outOfAmmo = false;
@@ -27,7 +27,7 @@ class Ammo {
 
     //check if reloading is ready
     if (outOfAmmo && reloadTimer.isFinished()) {
-      clipSize += 10; 
+      clipSize += 7; 
       outOfAmmo = false;
     }
   }

@@ -9,6 +9,9 @@ import ddf.minim.effects.*;
 
 Minim minim;
 AudioPlayer fired;
+AudioPlayer menu;
+AudioPlayer died;
+AudioPlayer gunFiring;
 
 
 Timer theTimer;
@@ -37,9 +40,12 @@ void setup() {
   monster1 = new Monsters();
   health1 = new Health();
   ammo1 = new Ammo();
-  
+
   minim = new Minim(this);
   fired = minim.loadFile("gunfire.mp3");
+  menu = minim.loadFile("menumusic.mp3");
+  died = minim.loadFile("death.mp3");
+  gunFiring = minim.loadFile("machinegun.mp3");
 
 
   if (state == 1) {
@@ -53,6 +59,7 @@ void setup() {
 
 void draw() {
   if (state == 1) {
+    menu.play();
     rectMode(CENTER);
 
     fill(15, 0, 6);
@@ -71,12 +78,13 @@ void draw() {
   }
 
   if (state == 2) {
+    menu.pause();
     background(255);
     fill(0);
     image(background, width/2, height/2);
     cursor(CROSS);
     textSize(28);
-    text( "Score: " + score, 70, 40);
+    text( "Score: " + score, 75, 40);
     if (theTimer.isFinished() ) {
       theMonsters.add(new Monsters());
       theTimer.begin();
@@ -86,13 +94,16 @@ void draw() {
       thisMonster.movingMonsters();
       if (thisMonster.x > 1000) {
         health1.takeDownLife();
+        gunFiring.play();
+        //gunFiring.loop();
       }
-      if( mousePressed && ammo1.clipSize >=1){
-         fired.play(); 
-         fired.rewind();
-  }
-      
+      if ( mousePressed && ammo1.clipSize >=1) {
+        fired.play(); 
+        fired.rewind();
+      }
     }
+
+
 
 
 
@@ -102,11 +113,12 @@ void draw() {
 
 
     if (state == 3) {
+      died.play();
       image(gameOver, width/2, height/2-60, gameOver.width*0.65, gameOver.height*0.87);
       cursor(HAND);
       textAlign(CENTER);
       textSize(42);
-      fill(255,0,0);
+      fill(255, 0, 0);
       text("Your score was " + score, 600, 660);
     }
   }
@@ -120,10 +132,10 @@ void killMonster() {
     if (thisMonster.isClicked(mouseX, mouseY) && ammo1.clipSize > 0) {
       theMonsters.remove(i);
       score ++;
-      if (score % 5 ==0){
+      if (score % 5 ==0) {
         health1.regenerateLife();
-        
       }
+      break;
     }
   }
 }
@@ -132,5 +144,4 @@ void killMonster() {
 void mousePressed() {
   killMonster();
   ammo1.shoot();
-  
 }

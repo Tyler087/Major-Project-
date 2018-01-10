@@ -6,7 +6,7 @@ public class Monsters {
   public int theMonsters =1000;
   int x = 0;
   int y = 500;
-  int dx = int(random(5, 11));
+  int dx = int(random(6, 11));
   float starTime = millis();
   float timeToWait = random(0, 1500);
   float size = 75;

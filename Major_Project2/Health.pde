@@ -58,6 +58,7 @@ class Health {
 
   void regenerateLife() {
       life += 10;
+      
 
   }
 }
