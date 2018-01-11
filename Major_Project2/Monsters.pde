@@ -40,7 +40,7 @@ public class Monsters {
     x = x + dx;
 
     noStroke();
-    ellipse(x, y, 35, size);
+    ellipse(x, y, 30, size);
 
     if ( x <1000) {
       imageMode(CENTER);
@@ -74,4 +74,11 @@ public class Monsters {
       return false;
     }
   }
+  
+  void increaseSpeed(){
+   if (score % 10 == 0){
+    dx = int(random(20,25)); 
+   }
+  }
+  
 }

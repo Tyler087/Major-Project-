@@ -102,14 +102,16 @@ void draw() {
         fired.rewind();
       }
     }
-
-
-
-
+    
 
     health1.displayLifeBar();
     health1.character();
     ammo1.display();
+    monster1.increaseSpeed();
+    if ( ammo1.outOfAmmo == true ) {
+    textSize(72);
+    text("Reloading...", width/2, height/2);
+  }
 
 
     if (state == 3) {
@@ -134,7 +136,12 @@ void killMonster() {
       score ++;
       if (score % 5 ==0) {
         health1.regenerateLife();
+        monster1.dx +=10;
       }
+      if (score % 10 == 0) {
+        ammo1.clipSize += score % 5;
+      }
+      
       break;
     }
   }
@@ -144,4 +151,7 @@ void killMonster() {
 void mousePressed() {
   killMonster();
   ammo1.shoot();
+  
+
+  
 }

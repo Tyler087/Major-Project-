@@ -12,7 +12,6 @@ class Ammo {
   Ammo() {
     clipSize = 7;
     reloadTimer = new Timer(1000);
-    startTime = millis();
     outOfAmmo = false;
   }
 
@@ -35,7 +34,8 @@ class Ammo {
   void shoot() {
     if (clipSize > 0) {
       clipSize -= 1;
-    } else {
+    }
+    if (clipSize == 0) {
       outOfAmmo = true;
       reloadTimer.begin();
     }
