@@ -48,7 +48,7 @@ void setup() {
   gunFiring = minim.loadFile("machinegun.mp3");
 
 
-  if (state == 1) {
+  if (state == 1) { //Start Screen
     imageMode(CENTER);
     image(titleScreen, width/2, height/2, titleScreen.width*0.7, titleScreen.height*0.75);
     textAlign(CENTER);
@@ -58,7 +58,7 @@ void setup() {
 }
 
 void draw() {
-  if (state == 1) {
+  if (state == 1) { // Start Screen
     menu.play();
     rectMode(CENTER);
 
@@ -77,7 +77,7 @@ void draw() {
     }
   }
 
-  if (state == 2) {
+  if (state == 2) { // Game Screen
     menu.pause();
     background(255);
     fill(0);
@@ -95,26 +95,25 @@ void draw() {
       if (thisMonster.x > 1000) {
         health1.takeDownLife();
         gunFiring.play();
-        //gunFiring.loop();
       }
       if ( mousePressed && ammo1.clipSize >=1) {
         fired.play(); 
         fired.rewind();
       }
     }
-    
+
 
     health1.displayLifeBar();
     health1.character();
     ammo1.display();
-    monster1.increaseSpeed();
+
     if ( ammo1.outOfAmmo == true ) {
-    textSize(72);
-    text("Reloading...", width/2, height/2);
-  }
+      textSize(72);
+      text("Reloading...", width/2, height/2);
+    }
 
 
-    if (state == 3) {
+    if (state == 3) { // End Screen
       died.play();
       image(gameOver, width/2, height/2-60, gameOver.width*0.65, gameOver.height*0.87);
       cursor(HAND);
@@ -128,7 +127,7 @@ void draw() {
 
 
 
-void killMonster() {
+void killMonster() { // Kills monster when clicked
   for (int i=theMonsters.size()-1; i >= 0; i--) { 
     Monsters thisMonster = theMonsters.get(i);
     if (thisMonster.isClicked(mouseX, mouseY) && ammo1.clipSize > 0) {
@@ -136,13 +135,8 @@ void killMonster() {
       score ++;
       if (score % 5 ==0) {
         health1.regenerateLife();
-        monster1.dx +=10;
       }
-      if (score % 10 == 0) {
-        ammo1.clipSize += score % 5;
-      }
-      
-      break;
+      break; // Breaks the loop so it only kills the top character
     }
   }
 }
@@ -151,7 +145,4 @@ void killMonster() {
 void mousePressed() {
   killMonster();
   ammo1.shoot();
-  
-
-  
 }

@@ -5,10 +5,12 @@ public class Monsters {
   PImage[] shooting = new PImage[2];
   public int theMonsters =1000;
   int x = 0;
-  int y = 500;
-  int dx = int(random(6, 11));
+  int y = 500; 
+  int speed = 6;
+  int wait = 1100;
+  int dx = int(random(speed, speed+5));
   float starTime = millis();
-  float timeToWait = random(0, 1500);
+  float timeToWait = random(0, wait);
   float size = 75;
   int shooterCounter = 0;
   int shootingCounter = 0;
@@ -23,6 +25,18 @@ public class Monsters {
     shooterCounter = 0;
     life = 2;
 
+    if (millis() > 5000 ) {
+      speed = speed + 3;
+    }
+    if (millis() > 10000) {
+      speed = speed + 5;
+    }
+    if (millis() > 15000) {
+      speed = speed + 6;
+    }
+
+    dx = int(random(speed, speed+5));
+
     //Loops through images to make it animated
     for (int i =0; i <shooter.length; i++) {
       shooter[i] = loadImage ( i + ".png");
@@ -33,6 +47,9 @@ public class Monsters {
   void movingMonsters() {
     fill(255, 255, 255, 0);
 
+    if (millis() > 5000 ) {
+      speed = speed + 1;
+    }
 
     if (x >= 1000) {
       x = 1000;
@@ -74,11 +91,4 @@ public class Monsters {
       return false;
     }
   }
-  
-  void increaseSpeed(){
-   if (score % 10 == 0){
-    dx = int(random(20,25)); 
-   }
-  }
-  
 }

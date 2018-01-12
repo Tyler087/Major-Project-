@@ -19,8 +19,6 @@ class Health {
   //Behaviour
 
   void character() {
-    //fill(255, 0, 0);
-    //ellipse(1100, 500, 50, 150);
     if (life >250) {
       image(zombie, 1100, 500, zombie.width*1.5, zombie.height*1.7);
     }
@@ -42,13 +40,10 @@ class Health {
     rectMode(CENTER);
     rect(width/2, 100, life, 40);
 
-
-
     if (life <= 0) {
       state = 3;
     }
   }
-
 
   void takeDownLife() {
     if (frameCount % 5 == 0) {
@@ -57,8 +52,6 @@ class Health {
   }
 
   void regenerateLife() {
-      life += 25;
-      
-
+    life += 25;
   }
 }

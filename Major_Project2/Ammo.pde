@@ -11,7 +11,7 @@ class Ammo {
   //contructor
   Ammo() {
     clipSize = 7;
-    reloadTimer = new Timer(1000);
+    reloadTimer = new Timer(1500);
     outOfAmmo = false;
   }
 
@@ -20,6 +20,7 @@ class Ammo {
   //behaviour
 
   void display() {
+    //Clipsize displayed on screen 
     fill(0, 250, 10);
     text("Ammo : ", width*0.84, 50);
     text(clipSize, width*0.9, 50);
@@ -32,6 +33,7 @@ class Ammo {
   }
 
   void shoot() {
+    //Takes one away from clipsize, called inside mousepressed funstion
     if (clipSize > 0) {
       clipSize -= 1;
     }
