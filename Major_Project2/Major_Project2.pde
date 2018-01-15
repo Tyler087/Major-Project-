@@ -26,6 +26,7 @@ PImage titleScreen;
 
 int score =0;
 int state = 1;
+int instaKill = 0;
 
 
 
@@ -85,6 +86,8 @@ void draw() {
     cursor(CROSS);
     textSize(28);
     text( "Score: " + score, 75, 40);
+    fill(255, 0, 0);
+    text("InstaKill : " + instaKill, 100, 100);
     if (theTimer.isFinished() ) {
       theMonsters.add(new Monsters());
       theTimer.begin();
@@ -113,6 +116,8 @@ void draw() {
     }
 
 
+
+
     if (state == 3) { // End Screen
       died.play();
       image(gameOver, width/2, height/2-60, gameOver.width*0.65, gameOver.height*0.87);
@@ -136,8 +141,16 @@ void killMonster() { // Kills monster when clicked
       if (score % 5 ==0) {
         health1.regenerateLife();
       }
+      if (score % 10 == 0) {
+        instaKill +=1;
+      }
       break; // Breaks the loop so it only kills the top character
     }
+  }
+}
+void instaKill() {
+  if (instaKill > 0) {
+    
   }
 }
 
@@ -145,4 +158,5 @@ void killMonster() { // Kills monster when clicked
 void mousePressed() {
   killMonster();
   ammo1.shoot();
+  instaKill();
 }
