@@ -19,10 +19,10 @@ class Health {
   //Behaviour
 
   void character() {
+    //Changes zombie image based on health
     if (life >250) {
       image(zombie, 1100, 500, zombie.width*1.5, zombie.height*1.7);
     }
-
 
     if (life <= 250 && life > 50) {
       image(zombie2, 1100, 500, zombie2.width*1.5, zombie2.height*1.7);
@@ -33,6 +33,7 @@ class Health {
   }
 
   void displayLifeBar() {
+    //Displays Life Bar On Screen 
     fill(0);
     textAlign(CENTER);
     text(life, width/2, 70);
@@ -46,12 +47,14 @@ class Health {
   }
 
   void takeDownLife() {
+    //Takes down life when monsters x coordinate is 1000 or over, called in main class
     if (frameCount % 5 == 0) {
       life = life - 3;
     }
   }
 
   void regenerateLife() {
+    //Regenerates life every 5 kills, called in main class
     life += 25;
   }
 }

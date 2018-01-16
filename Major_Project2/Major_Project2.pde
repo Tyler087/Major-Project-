@@ -1,5 +1,12 @@
 ArrayList<Monsters> theMonsters = new ArrayList<Monsters>();
 
+//Tyler Smith
+
+//Shooter Game
+//Click mouse to fire
+//Do not click while relaoding
+//Press any key to activate instaKill
+
 import ddf.minim.spi.*;
 import ddf.minim.signals.*;
 import ddf.minim.*;
@@ -12,6 +19,7 @@ AudioPlayer fired;
 AudioPlayer menu;
 AudioPlayer died;
 AudioPlayer gunFiring;
+AudioPlayer bomb;
 
 
 Timer theTimer;
@@ -47,6 +55,7 @@ void setup() {
   menu = minim.loadFile("menumusic.mp3");
   died = minim.loadFile("death.mp3");
   gunFiring = minim.loadFile("machinegun.mp3");
+  bomb = minim.loadFile("Bomb.mp3");
 
 
   if (state == 1) { //Start Screen
@@ -63,6 +72,7 @@ void draw() {
     menu.play();
     rectMode(CENTER);
 
+    //Play Button
     fill(15, 0, 6);
     rect(width/2, height/2+125, 200, 100);
     fill(255);
@@ -76,6 +86,7 @@ void draw() {
         state +=1;
       }
     }
+    
   }
 
   if (state == 2) { // Game Screen
@@ -85,7 +96,7 @@ void draw() {
     image(background, width/2, height/2);
     cursor(CROSS);
     textSize(28);
-    text( "Score: " + score, 75, 40);
+    text( "Score: " + score, 85, 40);
     fill(255, 0, 0);
     text("InstaKill : " + instaKill, 100, 100);
     if (theTimer.isFinished() ) {
@@ -97,7 +108,7 @@ void draw() {
       thisMonster.movingMonsters();
       if (thisMonster.x > 1000) {
         health1.takeDownLife();
-        gunFiring.play();
+        //gunFiring.play();
       }
       if ( mousePressed && ammo1.clipSize >=1) {
         fired.play(); 
@@ -105,7 +116,7 @@ void draw() {
       }
     }
 
-
+    instaKill();
     health1.displayLifeBar();
     health1.character();
     ammo1.display();
@@ -149,8 +160,17 @@ void killMonster() { // Kills monster when clicked
   }
 }
 void instaKill() {
-  if (instaKill > 0) {
-    
+  if (keyPressed == true) {
+    if (instaKill > 0) {
+      for (int i=theMonsters.size()-1; i >= 0; i--) { 
+        theMonsters.remove(i);
+        bomb.play();
+        bomb.rewind();
+        if (instaKill >0) {
+          instaKill -= 1;
+        }
+      }
+    }
   }
 }
 
@@ -158,5 +178,4 @@ void instaKill() {
 void mousePressed() {
   killMonster();
   ammo1.shoot();
-  instaKill();
 }

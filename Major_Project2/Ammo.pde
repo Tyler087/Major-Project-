@@ -3,7 +3,6 @@ class Ammo {
   //data
   int clipSize;
   int startTime;
-  //int reloadTimer;
   int endTime;
   boolean outOfAmmo;
   Timer reloadTimer;

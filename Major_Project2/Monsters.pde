@@ -25,8 +25,11 @@ public class Monsters {
     shooterCounter = 0;
     life = 2;
 
+    //Increases monster speed as time goes by
     if (millis() > 5000 ) {
       speed = speed + 3;
+      wait = int(random(0, 100));
+      println(timeToWait);
     }
     if (millis() > 10000) {
       speed = speed + 5;
@@ -44,12 +47,8 @@ public class Monsters {
   }
   //behaviour
 
-  void movingMonsters() {
+  void movingMonsters() { //moves monsters across screen
     fill(255, 255, 255, 0);
-
-    if (millis() > 5000 ) {
-      speed = speed + 1;
-    }
 
     if (x >= 1000) {
       x = 1000;
@@ -59,7 +58,7 @@ public class Monsters {
     noStroke();
     ellipse(x, y, 30, size);
 
-    if ( x <1000) {
+    if ( x <1000) {//Loops through images if monster postion if less than 1000 to make it animated
       imageMode(CENTER);
       image(shooter[shooterCounter], x, y);
       if (frameCount % 5 == 0) {
@@ -68,7 +67,7 @@ public class Monsters {
       }
     }
 
-    if ( x >= 1000) {
+    if ( x >= 1000) {//Shooting image
       for (int i =0; i <shooting.length; i++) {
         shooting[i] = loadImage ( i + "00.png");
       }
@@ -82,16 +81,12 @@ public class Monsters {
     }
   }
 
-  boolean isClicked(float _x, float _y) {
+  boolean isClicked(float _x, float _y) {//click detection
     float distanceFromCenter = dist(x, y, _x, _y);
     if (distanceFromCenter <size/2) {
-      //monsterLife -= 1;
       return true;
     } else {
       return false;
     }
   }
-  
-  
-  
 }
