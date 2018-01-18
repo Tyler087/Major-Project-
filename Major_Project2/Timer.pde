@@ -11,6 +11,10 @@ class Timer {
   void begin() {
     startTime = millis();
     endTime = startTime + timeToWait;
+    timeToWait -=40;
+    if(timeToWait < 800){
+      timeToWait = 800;
+    }
   }
 
   boolean isFinished() {

@@ -30,11 +30,9 @@ public class Monsters {
       speed = speed + 5;
     }
     if (millis() > 10000) {
-      speed = speed + 8;
+      speed = speed + 7;
     }
-    if (millis() > 15000) {
-      speed = speed + 10;
-    }
+    
 
     dx = int(random(speed, speed+5));
 
