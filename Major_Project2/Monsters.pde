@@ -7,14 +7,14 @@ public class Monsters {
   int x = 0;
   int y = 500; 
   int speed = 6;
-  int wait = 1100;
+  int wait = 750;
   int dx = int(random(speed, speed+5));
   float starTime = millis();
   float timeToWait = random(0, wait);
   float size = 75;
   int shooterCounter = 0;
   int shootingCounter = 0;
-  public int life;
+  int life;
 
 
 
@@ -27,15 +27,13 @@ public class Monsters {
 
     //Increases monster speed as time goes by
     if (millis() > 5000 ) {
-      speed = speed + 3;
-      wait = int(random(0, 100));
-      println(timeToWait);
-    }
-    if (millis() > 10000) {
       speed = speed + 5;
     }
+    if (millis() > 10000) {
+      speed = speed + 8;
+    }
     if (millis() > 15000) {
-      speed = speed + 6;
+      speed = speed + 10;
     }
 
     dx = int(random(speed, speed+5));
@@ -45,6 +43,7 @@ public class Monsters {
       shooter[i] = loadImage ( i + ".png");
     }
   }
+
   //behaviour
 
   void movingMonsters() { //moves monsters across screen
@@ -58,7 +57,7 @@ public class Monsters {
     noStroke();
     ellipse(x, y, 30, size);
 
-    if ( x <1000) {//Loops through images if monster postion if less than 1000 to make it animated
+    if ( x <1000) {//Loops through images, if monster postion if less than 1000 to make it animated
       imageMode(CENTER);
       image(shooter[shooterCounter], x, y);
       if (frameCount % 5 == 0) {

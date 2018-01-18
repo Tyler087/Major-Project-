@@ -41,7 +41,7 @@ class Health {
     rectMode(CENTER);
     rect(width/2, 100, life, 40);
 
-    if (life <= 0) {
+    if (life <= 0) {// changes to end screen in life is less than or equal to 0
       state = 3;
     }
   }
@@ -49,7 +49,7 @@ class Health {
   void takeDownLife() {
     //Takes down life when monsters x coordinate is 1000 or over, called in main class
     if (frameCount % 5 == 0) {
-      life = life - 3;
+      life = life - 4;
     }
   }
 

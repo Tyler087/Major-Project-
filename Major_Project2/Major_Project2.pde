@@ -1,6 +1,6 @@
-ArrayList<Monsters> theMonsters = new ArrayList<Monsters>();
-
 //Tyler Smith
+//Computer Science 30
+//Jan 17 2018
 
 //Shooter Game
 //Click mouse to fire
@@ -27,6 +27,8 @@ Monsters monster1;
 Health health1;
 Ammo ammo1;
 
+ArrayList<Monsters> theMonsters = new ArrayList<Monsters>();
+
 PImage gun;
 PImage background;
 PImage gameOver;
@@ -35,7 +37,6 @@ PImage titleScreen;
 int score =0;
 int state = 1;
 int instaKill = 0;
-
 
 
 
@@ -86,7 +87,6 @@ void draw() {
         state +=1;
       }
     }
-    
   }
 
   if (state == 2) { // Game Screen
@@ -110,7 +110,7 @@ void draw() {
         health1.takeDownLife();
         //gunFiring.play();
       }
-      if ( mousePressed && ammo1.clipSize >=1) {
+      if ( mousePressed && ammo1.clipSize >=1) {//Gun Fired Sound
         fired.play(); 
         fired.rewind();
       }
@@ -121,7 +121,7 @@ void draw() {
     health1.character();
     ammo1.display();
 
-    if ( ammo1.outOfAmmo == true ) {
+    if ( ammo1.outOfAmmo == true ) {//Displays reloading..
       textSize(72);
       text("Reloading...", width/2, height/2);
     }
@@ -168,6 +168,7 @@ void instaKill() {
         bomb.rewind();
         if (instaKill >0) {
           instaKill -= 1;
+          
         }
       }
     }

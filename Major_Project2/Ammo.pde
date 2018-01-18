@@ -10,7 +10,7 @@ class Ammo {
   //contructor
   Ammo() {
     clipSize = 7;
-    reloadTimer = new Timer(1500);
+    reloadTimer = new Timer(1700);
     outOfAmmo = false;
   }
 
@@ -36,7 +36,7 @@ class Ammo {
     if (clipSize > 0) {
       clipSize -= 1;
     }
-    if (clipSize == 0) {
+    if (clipSize == 0) {//sets boolean to true if clipsize is 0
       outOfAmmo = true;
       reloadTimer.begin();
     }
